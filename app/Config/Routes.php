@@ -35,8 +35,19 @@ $routes->set404Override();
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
+
+//EMPIEZAN LAS RUTAS PARA EL PORTAL 
 $routes->get('/', 'Home::index');
 $routes->get('/setupbd', 'setup::index'); //configuracion de la base de datos
+$routes->get('/about', 'Home::about');
+$routes->get('/login', 'Home::login');
+$routes->get('/recetas', 'recetas::inicio');
+$routes->get('/recetas/descripcion', 'recetas::descripcion');
+$routes->get('/categorias', 'categorias::inicio');
+$routes->get('/categorias', 'categorias::descripcion');
+
+//EMPIEZAN LAS RUTAS PARA EL PANEL 
+$routes->get('/panel', 'panel::index');
 
 /*
  * --------------------------------------------------------------------
