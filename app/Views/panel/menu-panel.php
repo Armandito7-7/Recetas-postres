@@ -3,34 +3,31 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Portal | Perfil</title>
+  <title>Panel | Dashboard</title>
 
-  <!-- Google Font: Source Sans Pro -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="<?php echo base_url();?>/panel/plugins/fontawesome-free/css/all.min.css">
+  <link rel="stylesheet" href="panel/plugins/fontawesome-free/css/all.min.css">
+  <link rel="stylesheet" href="panel/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
+  <!-- iCheck -->
+  <link rel="stylesheet" href="panel/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+  <!-- JQVMap -->
+  <link rel="stylesheet" href="panel/plugins/jqvmap/jqvmap.min.css">
   <!-- Theme style -->
-  <link rel="stylesheet" href="<?php echo base_url();?>/panel/dist/css/adminlte.min.css">
+  <link rel="stylesheet" href="panel/dist/css/adminlte.min.css">
+  <!-- overlayScrollbars -->
+  <link rel="stylesheet" href="panel/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+  <!-- Daterange picker -->
+  <link rel="stylesheet" href="panel/plugins/daterangepicker/daterangepicker.css">
+  <!-- summernote -->
+  <link rel="stylesheet" href="panel/plugins/summernote/summernote-bs4.min.css">
 </head>
-<body class="hold-transition sidebar-mini">
-<!-- Site wrapper -->
-<div class="wrapper">
-  <!-- Navbar -->
-  <nav class="main-header navbar navbar-expand navbar-white navbar-light">
-    <!-- Left navbar links -->
-    <ul class="navbar-nav">
-      <li class="nav-item">
-        <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
-      </li>
-  </nav>
-  <!-- /.navbar -->
+<body class="hold-transition sidebar-mini layout-fixed">
 
   
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="<?php echo base_url();?>/" class="brand-link">
-      <img src="<?php echo base_url();?>/panel/dist/img/logomin.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+      <img src="panel/dist/img/logomin.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
       <span class="brand-text font-weight-light">Dulzura Intensa </span>
     </a>
 
@@ -58,7 +55,7 @@
 
         
         <li class="nav-item">
-            <a href="<?php echo base_url();?>/admin/" class="nav-link ">
+            <a href="<?php echo base_url();?>/admin/" class="nav-link active">
               <i class="nav-icon fas fa-book"></i>
               <p>
                 Inicio
@@ -104,7 +101,7 @@
           <li class="nav-header">RECETAS</li>
 
           <li class="nav-item">
-            <a href="<?php echo base_url();?>/admin/recetas" class="nav-link">
+            <a href="<?php echo base_url().'/admin/recetas';?>" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
               <p>
                  General
@@ -189,117 +186,40 @@
     <!-- /.sidebar -->
   </aside>
 
-  <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-    <section class="content-header">
-      <div class="container-fluid">
-        <div class="row mb-2">
-          <div class="col-sm-6">
-            <h1>Mi Perfil</h1>
-          </div>
-        </div>
-      </div><!-- /.container-fluid -->
-    </section>
-
-    <!-- Main content -->
-    <section class="content">
-
-      <!-- Default box -->
-      <div class="card card-solid">
-        <div class="card-body">
-          <div class="row">
-            <div class="col-12 col-sm-6">
-             <div class="col-12"></br>
-              <?php echo'
-          <img src="data:image/jpg;base64,'.base64_encode(session('imagen')).'" height="300pt"  alt="Product Image">'?>
-              </div>
-              <!-- Puedo meter importar imagen -->
-              <div class="mt-4">
-              <a href="<?php echo base_url().'/admin/editarfoto/'.session('id')?>">
-                <div class="btn btn-primary btn-lg btn-flat">
-                  <i class="fas fa-image fa-lg mr-2"></i>
-                  Editar Foto
-                </div>
-              </a>
-              </div>
-            </div>
-            <div class="col-12 col-sm-6">
-              <h3 class="my-3"><?php echo session('nombre'),' ',session('ap_p'),' ',session('ap_m')?></h3>
-              <p>   <i class="fas fa-lg fa-phone"></i> <?php echo '#. '.session('telefono') ?> </p>
-
-              <h4> IDENTIFICADOR (unico) </h4>
-              <div class="btn-group btn-group-toggle" data-toggle="buttons">
-                <label class="btn btn-default text-center">
-                  <input type="radio" name="color_option" id="color_option_a4" autocomplete="off">
-                  <?php echo session('id') ?>
-                  <br>
-                  <i class="fas fa-circle fa-2x text-red"></i>
-                </label>
-                
-              </div>
-
-              <h4 class="mt-3">ROL <small>(categoria) </small></h4>
-              <div class="btn-group btn-group-toggle" data-toggle="buttons">
-                <label class="btn btn-default text-center">
-                  <input type="radio" name="color_option" id="color_option_b4" autocomplete="off">
-                  <span class="text-xl"><?php echo ((session('rol') == 1) ?  'AD' :  'US') ?></span>
-                  <br>
-                  <?php echo ((session('rol') == 1) ?  'Administrador' :  'Usuario') ?>
-                </label>
-              </div>
-
-              <div class="bg-gray py-2 px-3 mt-4">
-                <h2 class="mb-0">
-                <?php echo session('email') ?>
-                </h2>
-                <h4 class="mt-0">
-                  <small><?php echo ((session('sexo') == 'H') ?  'Hombre' :  'Mujer') ?> </small>
-                </h4>
-              </div>
-
-              <div class="mt-4">
-              <a href="<?php echo base_url().'/admin/perfil/editar/'.session('id')?>">
-                <div class="btn btn-primary btn-lg btn-flat">
-                  <i class="fas fa-user fa-lg mr-2"></i>
-                  Editar
-                </div>
-              </a>
-              </div>
-
-
-    </section>
-    <!-- /.content -->
-  </div>
-  <!-- /.content-wrapper -->
 
   
-
-  <!-- Control Sidebar -->
-  <aside class="control-sidebar control-sidebar-dark">
-    <!-- Control sidebar content goes here -->
-  </aside>
-  <!-- /.control-sidebar -->
-</div>
-<!-- ./wrapper -->
-
 <!-- jQuery -->
-<script src="<?php echo base_url();?>/panel/plugins/jquery/jquery.min.js"></script>
-<!-- Bootstrap 4 -->
-<script src="<?php echo base_url();?>/panel/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-<!-- AdminLTE App -->
-<script src="<?php echo base_url();?>/panel/dist/js/adminlte.min.js"></script>
-<!-- AdminLTE for demo purposes -->
-
+<script src="panel/plugins/jquery/jquery.min.js"></script>
+<!-- jQuery UI 1.11.4 -->
+<script src="panel/plugins/jquery-ui/jquery-ui.min.js"></script>
+<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
 <script>
-  $(document).ready(function() {
-    $('.product-image-thumb').on('click', function () {
-      var $image_element = $(this).find('img')
-      $('.product-image').prop('src', $image_element.attr('src'))
-      $('.product-image-thumb.active').removeClass('active')
-      $(this).addClass('active')
-    })
-  })
+  $.widget.bridge('uibutton', $.ui.button)
 </script>
+<!-- Bootstrap 4 -->
+<script src="panel/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- ChartJS -->
+<script src="panel/plugins/chart.js/Chart.min.js"></script>
+<!-- Sparkline -->
+<script src="panel/plugins/sparklines/sparkline.js"></script>
+<!-- JQVMap -->
+<script src="panel/plugins/jqvmap/jquery.vmap.min.js"></script>
+<script src="panel/plugins/jqvmap/maps/jquery.vmap.usa.js"></script>
+<!-- jQuery Knob Chart -->
+<script src="panel/plugins/jquery-knob/jquery.knob.min.js"></script>
+<!-- daterangepicker -->
+<script src="panel/plugins/moment/moment.min.js"></script>
+<script src="panel/plugins/daterangepicker/daterangepicker.js"></script>
+<!-- Tempusdominus Bootstrap 4 -->
+<script src="panel/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
+<!-- Summernote -->
+<script src="panel/plugins/summernote/summernote-bs4.min.js"></script>
+<!-- overlayScrollbars -->
+<script src="panel/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+<!-- AdminLTE App -->
+<script src="panel/dist/js/adminlte.js"></script>
+
+<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+<script src="panel/dist/js/pages/dashboard.js"></script>
 </body>
 </html>

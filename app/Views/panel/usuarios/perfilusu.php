@@ -1,3 +1,4 @@
+
 <?php
 
                 $id = $datos[0]['id_usuario'];
@@ -16,15 +17,14 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Portal | Editar</title>
-  
+  <title>Portal | Perfil Usuario</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome -->
-  <link rel="stylesheet" href="<?php echo base_url()?>/panel/plugins/fontawesome-free/css/all.min.css">
+  <link rel="stylesheet" href="<?php echo base_url();?>/panel/plugins/fontawesome-free/css/all.min.css">
   <!-- Theme style -->
-  <link rel="stylesheet" href="<?php echo base_url()?>/panel/dist/css/adminlte.min.css">
+  <link rel="stylesheet" href="<?php echo base_url();?>/panel/dist/css/adminlte.min.css">
 </head>
 <body class="hold-transition sidebar-mini">
 <!-- Site wrapper -->
@@ -210,122 +210,85 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Editar Perfil</h1>
+            <h1>Perfil</h1>
           </div>
         </div>
       </div><!-- /.container-fluid -->
     </section>
-    <?= session()->getFlashdata('error') ?>
-    <?= service('validation')->listErrors() ?>
+
     <!-- Main content -->
-    <form action="<?php echo base_url().'/admin/perfil/editar/actualizar/'.$id?>" method="POST" enctype="multipart/form-data">
-    <?= csrf_field() ?>
     <section class="content">
-      <div class="row">
-        <div class="col-md-6">
-          <div class="card card-primary">
-            <div class="card-header">
-              <h3 class="card-title">General</h3>
 
-              <div class="card-tools">
-                <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
-                  <i class="fas fa-minus"></i>
-                </button>
+      <!-- Default box -->
+      <div class="card card-solid">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-12 col-sm-6">
+             <div class="col-12"></br>
+              <?php echo'
+          <img src="data:image/jpg;base64,'.base64_encode($imagen).'" height="300pt"  alt="Product Image">'?>
               </div>
-            </div>
-            <div class="card-body">
-              <div class="form-group">
-        
-                <label for="inputName">Nombre</label>
-                <input type="text" name="nombre_usu" class="form-control" value="<?php echo $nombre?>" placeholder="Jose Alfredo" required>
-              </div>
-              <div class="form-group">
-                <label for="inputName">Apellido Paterno</label>
-                <input type="text" name="ap_pa" class="form-control" value="<?php echo $ap_p?>" placeholder="Martinez" required>
-              </div>
-              <div class="form-group">
-                <label for="inputName">Apellido Materno</label>
-                <input type="text" name="ap_ma" class="form-control" value="<?php echo $ap_m?>" placeholder="Lopez" required>
-              </div>
-              <div class="form-group">
-                <label for="inputStatus">Sexo</label>
-                <select name="sexo_usu" class="form-control custom-select">
-                  <option disabled>Selecciona</option>
-                  <option value="H" <?= ($sexo == 'H' ? 'selected' : '') ?> >Hombre</option>
-                  <option value="M" <?= ($sexo == 'M' ? 'selected' : '') ?> >Mujer</option>
-                </select>
-              </div>
-              <div class="form-group">
-              <label for="inputName">Rol de usuario</label>
-                <br>
-                <input type="radio" name="rol_usu" id="rol-administrador" value="1" <?php echo ($rol == 1 ? 'checked' : '');?>>
-                <label for="rol-administrador"> Administrador</label>
-                <br>
-                <input type="radio" name="rol_usu" id="rol-usuario" value="2" <?php echo ($rol == 2 ? 'checked' : '');?>>
-                <label for="rol-usuario"> Usuario</label>
+              <!-- Puedo meter importar imagen -->
+              <div class="mt-4">
+              <a href="<?php echo base_url().'/admin/editarfoto/'.$id?>">
+                <div class="btn btn-primary btn-lg btn-flat">
+                  <i class="fas fa-image fa-lg mr-2"></i>
+                  Editar Foto
                 </div>
-
-              <div class="form-group">
-                <label for="inputClientCompany">Telefono</label placeholder="" required>
-                <input type="text" name="telefono_usu" class="form-control" value="<?php echo $telefono?>">
+              </a>
               </div>
             </div>
-            <!-- /.card-body -->
-          </div>
-          <!-- /.card -->
-        </div>
-        <div class="col-md-6">
-          <div class="card card-secondary">
-            <div class="card-header">
-              <h3 class="card-title">Datos Sesion</h3>
+            <div class="col-12 col-sm-6">
+              <h3 class="my-3"><?php echo $nombre,' ',$ap_p,' ',$ap_m?></h3>
+              <p>   <i class="fas fa-lg fa-phone"></i> <?php echo '#. '.$telefono ?> </p>
 
-              <div class="card-tools">
-                <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
-                  <i class="fas fa-minus"></i>
-                </button>
+              <h4> IDENTIFICADOR (unico) </h4>
+              <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                <label class="btn btn-default text-center">
+                  <input type="radio" name="color_option" id="color_option_a4" autocomplete="off">
+                  <?php echo $id ?>
+                  <br>
+                  <i class="fas fa-circle fa-2x text-red"></i>
+                </label>
+                
               </div>
-            </div>
-            <div class="card-body">
-            <div class="form-group">
-                <label for="inputClientCompany">E-mail</label>
-                <input type="email" name="email_usu" class="form-control" value="<?php echo $email?>" placeholder="josealfredoml@gmail.com" required>
+
+              <h4 class="mt-3">ROL <small>(categoria) </small></h4>
+              <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                <label class="btn btn-default text-center">
+                  <input type="radio" name="color_option" id="color_option_b4" autocomplete="off">
+                  <span class="text-xl"><?php echo (($rol == 1) ?  'AD' :  'US') ?></span>
+                  <br>
+                  <?php echo (($rol == 1) ?  'Administrador' :  'Usuario') ?>
+                </label>
               </div>
-              <div class="form-group">
-                <label for="inputClientCompany">Contraseña</label>
-                <input type="password" id="pass" name="pass_usu" class="form-control" value="" placeholder="**********" onkeyup="check();" required>
+
+              <div class="bg-gray py-2 px-3 mt-4">
+                <h2 class="mb-0">
+                <?php echo $email ?>
+                </h2>
+                <h4 class="mt-0">
+                  <small><?php echo (($sexo == 'H') ?  'Hombre' :  'Mujer') ?> </small>
+                </h4>
               </div>
-              <div class="form-group">
-                <label for="inputClientCompany">Confirmar Contraseña</label>
-                <input type="password" id="pass_confir" name="pass_usu_confir" class="form-control" value="" placeholder="**********" onkeyup="check();" required>
-              </div>
-              <div class="form-group row mb-4">
-                <div class="col-sm-12 text-right">
-                  <span id="mensaje_password"></span>
+
+              <div class="mt-4">
+              <a href="<?php echo base_url().'/admin/perfil/editar/'.$id?>">
+                <div class="btn btn-primary btn-lg btn-flat">
+                  <i class="fas fa-user fa-lg mr-2"></i>
+                  Editar
                 </div>
+              </a>
               </div>
-               <!-- imagen
-              <div class="form-group">
-                <label for="inputEstimatedDuration">Imagen perfil</label>
-                <input type="file" class="form-control " name="archivo_usu" value="" placeholder="" required>
-              </div>
-               -->
-            </div>
-            <!-- /.card-body -->
-          </div>
-          <!-- /.card -->
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-12">
-          <a href="<?php echo base_url('/admin')?>" class="btn btn-secondary">Cancelar</a>
-          <input type="submit" id="btn-registrar" value="Editar Perfil" class="btn btn-success float-right">
-        </div>
-      </div>
+
+
     </section>
-    </form>
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
+
+  
+
   <!-- Control Sidebar -->
   <aside class="control-sidebar control-sidebar-dark">
     <!-- Control sidebar content goes here -->
@@ -335,29 +298,21 @@
 <!-- ./wrapper -->
 
 <!-- jQuery -->
-<script src="<?php echo base_url()?>/panel/plugins/jquery/jquery.min.js"></script>
+<script src="<?php echo base_url();?>/panel/plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap 4 -->
-<script src="<?php echo base_url()?>/panel/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="<?php echo base_url();?>/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- AdminLTE App -->
-<script src="<?php echo base_url()?>/panel/dist/js/adminlte.min.js"></script>
-<!-- AdminLTE for demo purposes -->
-<script src="<?php echo base_url()?>/panel/dist/js/demo.js"></script>
+<script src="<?php echo base_url();?>/panel/dist/js/adminlte.min.js"></script>
 
 <script>
-        var check = function(){
-            var campo_password = document.getElementById('pass');
-            var campo_confirmar_password = document.getElementById('pass_confir');
-            if(campo_password.value == campo_confirmar_password.value){
-                document.getElementById('mensaje_password').innerHTML = 'Las contraseñas coinciden';
-                document.getElementById('mensaje_password').style.color = 'green';
-                document.getElementById('btn-registrar').disabled = false;
-            }//end if contraseñas coinciden
-            else{
-                document.getElementById('mensaje_password').innerHTML = 'Las contraseñas no coinciden';
-                document.getElementById('mensaje_password').style.color = 'red';
-                document.getElementById('btn-registrar').disabled = true;
-            }//end else contraseñas coinciden
-        }//end function
-    </script>
+  $(document).ready(function() {
+    $('.product-image-thumb').on('click', function () {
+      var $image_element = $(this).find('img')
+      $('.product-image').prop('src', $image_element.attr('src'))
+      $('.product-image-thumb.active').removeClass('active')
+      $(this).addClass('active')
+    })
+  })
+</script>
 </body>
 </html>

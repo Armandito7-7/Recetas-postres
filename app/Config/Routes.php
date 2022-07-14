@@ -41,13 +41,61 @@ $routes->get('/', 'Home::index');
 $routes->get('/setupbd', 'setup::index'); //configuracion de la base de datos
 $routes->get('/about', 'Home::about');
 $routes->get('/login', 'Home::login');
+$routes->post('/verificar', 'Home::verificar'); //consulta para inicio de sesion
+$routes->post('/primerusuario', 'Home::registrarprimer'); //consulta para primer registro usuario
 $routes->get('/recetas', 'recetas::inicio');
+$routes->get('/salir', 'Home::salirsesion');
 $routes->get('/recetas/descripcion', 'recetas::descripcion');
 $routes->get('/categorias', 'categorias::inicio');
 $routes->get('/categorias', 'categorias::descripcion');
 
 //EMPIEZAN LAS RUTAS PARA EL PANEL 
-$routes->get('/panel', 'panel::index');
+
+$routes->get('/admin', 'panel::index');
+
+    //(Perfil)
+$routes->get('/admin/perfil', 'panel::perfil');
+$routes->get('/admin/perfil/editar/(:any)', 'panel::perfileditar/$1');
+    //(USUARIOS)
+
+$routes->get('/admin/usuarios/elimanarusu/(:any)', 'panel::eliminarusu/$1');
+$routes->get('/admin/usuarios', 'panel::usuarios');
+$routes->get('/admin/usuarios/perfil/(:any)', 'panel::perfilusu/$1');
+$routes->get('/admin/añadirusu', 'panel::nuevousuario');
+$routes->get('/admin/editarfoto/(:any)', 'panel::editarfoto/$1');
+$routes->post('/admin/nuevousu', 'panel::crearusu');
+$routes->post('/admin/perfil/editar/actualizar/(:any)', 'panel::actualizarusu/$1');
+$routes->post('/admin/perfil/editar/actualizarfoto/(:any)', 'panel::actualizarfotousu/$1');
+
+    //(RECETAS)
+$routes->get('/admin/recetas', 'panel::recetas');
+$routes->get('/admin/añadirrecetas', 'panel::recetasnuevo');
+$routes->get('/admin/recetas/ver/(:any)', 'panel::verreceta/$1');
+$routes->get('/admin/recetas/eliminar/(:any)', 'panel::eliminarrece/$1');
+$routes->get('/admin/recetas/editarfoto/(:any)', 'panel::editarfotoreceta/$1');
+$routes->post('/admin/recetas/actualizarfoto/(:any)', 'panel::actualizarfotorece/$1');
+$routes->post('/admin/nuevarece', 'panel::crearrece');
+
+$routes->get('/admin/receta/editar/(:any)', 'panel::recetaseditar/$1');
+$routes->post('/admin/actualizarrece/(:any)', 'panel::actualizarrecet/$1');
+
+$routes->get('/admin/categoria/(:any)', 'panel::vercategorias/$1');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /*
  * --------------------------------------------------------------------

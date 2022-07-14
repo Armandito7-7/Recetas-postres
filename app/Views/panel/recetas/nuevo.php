@@ -1,23 +1,9 @@
-<?php
-
-                $id = $datos[0]['id_usuario'];
-                $nombre = $datos[0]['nombre_usuario'];
-                $ap_p = $datos[0]['ap_paterno_usuario'];
-                $ap_m = $datos[0]['ap_materno_usuario'];
-                $sexo = $datos[0]['sexo_usuario'];
-                $rol = $datos[0]['rol_usuario'];
-                $email = $datos[0]['email_usuario'];
-                $imagen = $datos[0]['ruta_imagen'];
-                $telefono = $datos[0]['telefono'];
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Portal | Editar</title>
-  
+  <title>AdminLTE 3 | Project Edit</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -44,7 +30,7 @@
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="<?php echo base_url();?>/" class="brand-link">
-      <img src="<?php echo base_url();?>/panel/dist/img/logomin.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+      <img src="<?php echo base_url()?>/panel/dist/img/logomin.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
       <span class="brand-text font-weight-light">Dulzura Intensa </span>
     </a>
 
@@ -96,7 +82,7 @@
 
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="'.base_url().'/admin/usuarios" class="nav-link active">
+                <a href="'.base_url().'/admin/usuarios" class="nav-link ">
                   <i class="far fas fa-columns"></i>
                   <p>Ver usuarios</p>
                 </a>
@@ -183,7 +169,7 @@
          
         
           <li class="nav-item">
-            <a href="<?php echo base_url();?>/admin/añadirrecetas" class="nav-link">
+            <a href="<?php echo base_url();?>/admin/añadirrecetas" class="nav-link active">
               <i class="nav-icon far fa-plus-square"></i>
               <p>
                 Añadir
@@ -203,6 +189,7 @@
     <!-- /.sidebar -->
   </aside>
 
+  
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -210,15 +197,16 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Editar Perfil</h1>
+            <h1>Añadir nueva receta</h1>
           </div>
+          
         </div>
       </div><!-- /.container-fluid -->
     </section>
     <?= session()->getFlashdata('error') ?>
     <?= service('validation')->listErrors() ?>
     <!-- Main content -->
-    <form action="<?php echo base_url().'/admin/perfil/editar/actualizar/'.$id?>" method="POST" enctype="multipart/form-data">
+    <form action="<?php echo base_url('/admin/nuevarece')?>" method="POST" enctype="multipart/form-data">
     <?= csrf_field() ?>
     <section class="content">
       <div class="row">
@@ -235,40 +223,18 @@
             </div>
             <div class="card-body">
               <div class="form-group">
-        
-                <label for="inputName">Nombre</label>
-                <input type="text" name="nombre_usu" class="form-control" value="<?php echo $nombre?>" placeholder="Jose Alfredo" required>
+                <label for="inputName">Nombre de la receta</label>
+                <input type="text" name="nombre_rece" class="form-control" value="" placeholder="Pastel de chocolate" required>
               </div>
               <div class="form-group">
-                <label for="inputName">Apellido Paterno</label>
-                <input type="text" name="ap_pa" class="form-control" value="<?php echo $ap_p?>" placeholder="Martinez" required>
+                <label for="inputDescription">Ingredientes</label>
+                <textarea id="inputDescription" name="ingredientes" class="form-control" rows="4"></textarea>
               </div>
               <div class="form-group">
-                <label for="inputName">Apellido Materno</label>
-                <input type="text" name="ap_ma" class="form-control" value="<?php echo $ap_m?>" placeholder="Lopez" required>
+                <label for="inputDescription">Preparación</label>
+                <textarea id="inputDescription" name="preparacion" class="form-control" rows="4"></textarea>
               </div>
-              <div class="form-group">
-                <label for="inputStatus">Sexo</label>
-                <select name="sexo_usu" class="form-control custom-select">
-                  <option disabled>Selecciona</option>
-                  <option value="H" <?= ($sexo == 'H' ? 'selected' : '') ?> >Hombre</option>
-                  <option value="M" <?= ($sexo == 'M' ? 'selected' : '') ?> >Mujer</option>
-                </select>
-              </div>
-              <div class="form-group">
-              <label for="inputName">Rol de usuario</label>
-                <br>
-                <input type="radio" name="rol_usu" id="rol-administrador" value="1" <?php echo ($rol == 1 ? 'checked' : '');?>>
-                <label for="rol-administrador"> Administrador</label>
-                <br>
-                <input type="radio" name="rol_usu" id="rol-usuario" value="2" <?php echo ($rol == 2 ? 'checked' : '');?>>
-                <label for="rol-usuario"> Usuario</label>
-                </div>
-
-              <div class="form-group">
-                <label for="inputClientCompany">Telefono</label placeholder="" required>
-                <input type="text" name="telefono_usu" class="form-control" value="<?php echo $telefono?>">
-              </div>
+              
             </div>
             <!-- /.card-body -->
           </div>
@@ -277,7 +243,7 @@
         <div class="col-md-6">
           <div class="card card-secondary">
             <div class="card-header">
-              <h3 class="card-title">Datos Sesion</h3>
+              <h3 class="card-title">Datos</h3>
 
               <div class="card-tools">
                 <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
@@ -285,40 +251,41 @@
                 </button>
               </div>
             </div>
+            
             <div class="card-body">
             <div class="form-group">
-                <label for="inputClientCompany">E-mail</label>
-                <input type="email" name="email_usu" class="form-control" value="<?php echo $email?>" placeholder="josealfredoml@gmail.com" required>
+                <label for="inputStatus">Categoria</label>
+                <select id="inputStatus" name="categoria" class="form-control custom-select">
+                  <option disabled>Selecione una Categoria</option>
+                  <?php
+                       foreach ($datos as $key) {
+                        echo '<option value="'.$key->id_categoria.'">'.
+                        $key->nombre_categoria.
+                         '</option>';
+                         }?>
+                </select>
               </div>
               <div class="form-group">
-                <label for="inputClientCompany">Contraseña</label>
-                <input type="password" id="pass" name="pass_usu" class="form-control" value="" placeholder="**********" onkeyup="check();" required>
-              </div>
-              <div class="form-group">
-                <label for="inputClientCompany">Confirmar Contraseña</label>
-                <input type="password" id="pass_confir" name="pass_usu_confir" class="form-control" value="" placeholder="**********" onkeyup="check();" required>
-              </div>
-              <div class="form-group row mb-4">
-                <div class="col-sm-12 text-right">
-                  <span id="mensaje_password"></span>
+                <label for="inputEstimatedBudget">Tiempo (mnts)</label>
+                <input type="text" name="tiempo" class="form-control" value="" placeholder="90" required>
                 </div>
+              
+               <div class="form-group">
+                <label for="inputEstimatedDuration">Imagen </label>
+                <input type="file" class="form-control " name="archivo_rece" value="" placeholder="" required>
               </div>
-               <!-- imagen
-              <div class="form-group">
-                <label for="inputEstimatedDuration">Imagen perfil</label>
-                <input type="file" class="form-control " name="archivo_usu" value="" placeholder="" required>
-              </div>
-               -->
             </div>
             <!-- /.card-body -->
           </div>
+         
+         
           <!-- /.card -->
         </div>
       </div>
       <div class="row">
         <div class="col-12">
-          <a href="<?php echo base_url('/admin')?>" class="btn btn-secondary">Cancelar</a>
-          <input type="submit" id="btn-registrar" value="Editar Perfil" class="btn btn-success float-right">
+          <a href="#" class="btn btn-secondary">Cancelar</a>
+          <input type="submit" value="Insertar Receta" class="btn btn-success float-right">
         </div>
       </div>
     </section>
@@ -326,9 +293,9 @@
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
-  <!-- Control Sidebar -->
-  <aside class="control-sidebar control-sidebar-dark">
-    <!-- Control sidebar content goes here -->
+
+  
+  
   </aside>
   <!-- /.control-sidebar -->
 </div>
@@ -341,23 +308,5 @@
 <!-- AdminLTE App -->
 <script src="<?php echo base_url()?>/panel/dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
-<script src="<?php echo base_url()?>/panel/dist/js/demo.js"></script>
-
-<script>
-        var check = function(){
-            var campo_password = document.getElementById('pass');
-            var campo_confirmar_password = document.getElementById('pass_confir');
-            if(campo_password.value == campo_confirmar_password.value){
-                document.getElementById('mensaje_password').innerHTML = 'Las contraseñas coinciden';
-                document.getElementById('mensaje_password').style.color = 'green';
-                document.getElementById('btn-registrar').disabled = false;
-            }//end if contraseñas coinciden
-            else{
-                document.getElementById('mensaje_password').innerHTML = 'Las contraseñas no coinciden';
-                document.getElementById('mensaje_password').style.color = 'red';
-                document.getElementById('btn-registrar').disabled = true;
-            }//end else contraseñas coinciden
-        }//end function
-    </script>
 </body>
 </html>

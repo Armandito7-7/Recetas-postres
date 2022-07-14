@@ -1,30 +1,17 @@
-<?php
-
-                $id = $datos[0]['id_usuario'];
-                $nombre = $datos[0]['nombre_usuario'];
-                $ap_p = $datos[0]['ap_paterno_usuario'];
-                $ap_m = $datos[0]['ap_materno_usuario'];
-                $sexo = $datos[0]['sexo_usuario'];
-                $rol = $datos[0]['rol_usuario'];
-                $email = $datos[0]['email_usuario'];
-                $imagen = $datos[0]['ruta_imagen'];
-                $telefono = $datos[0]['telefono'];
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Portal | Editar</title>
+  <title>Portal | Añadir</title>
   
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome -->
-  <link rel="stylesheet" href="<?php echo base_url()?>/panel/plugins/fontawesome-free/css/all.min.css">
+  <link rel="stylesheet" href="<?php echo base_url();?>/panel/plugins/fontawesome-free/css/all.min.css">
   <!-- Theme style -->
-  <link rel="stylesheet" href="<?php echo base_url()?>/panel/dist/css/adminlte.min.css">
+  <link rel="stylesheet" href="<?php echo base_url();?>/panel/dist/css/adminlte.min.css">
 </head>
 <body class="hold-transition sidebar-mini">
 <!-- Site wrapper -->
@@ -96,14 +83,14 @@
 
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="'.base_url().'/admin/usuarios" class="nav-link active">
+                <a href="'.base_url().'/admin/usuarios" class="nav-link ">
                   <i class="far fas fa-columns"></i>
                   <p>Ver usuarios</p>
                 </a>
               </li>
 
               <li class="nav-item">
-                <a href="'.base_url().'/admin/añadirusu" class="nav-link">
+                <a href="'.base_url().'/admin/añadirusu" class="nav-link active">
                   <i class="far far fa-plus-square"></i>
                   <p>Añadir usuarios</p>
                 </a>
@@ -210,7 +197,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Editar Perfil</h1>
+            <h1>Añadir Usuario</h1>
           </div>
         </div>
       </div><!-- /.container-fluid -->
@@ -218,7 +205,7 @@
     <?= session()->getFlashdata('error') ?>
     <?= service('validation')->listErrors() ?>
     <!-- Main content -->
-    <form action="<?php echo base_url().'/admin/perfil/editar/actualizar/'.$id?>" method="POST" enctype="multipart/form-data">
+    <form action="<?php echo base_url('/admin/nuevousu')?>" method="POST" enctype="multipart/form-data">
     <?= csrf_field() ?>
     <section class="content">
       <div class="row">
@@ -237,37 +224,37 @@
               <div class="form-group">
         
                 <label for="inputName">Nombre</label>
-                <input type="text" name="nombre_usu" class="form-control" value="<?php echo $nombre?>" placeholder="Jose Alfredo" required>
+                <input type="text" name="nombre_usu" class="form-control" value="" placeholder="Jose Alfredo" required>
               </div>
               <div class="form-group">
                 <label for="inputName">Apellido Paterno</label>
-                <input type="text" name="ap_pa" class="form-control" value="<?php echo $ap_p?>" placeholder="Martinez" required>
+                <input type="text" name="ap_pa" class="form-control" value="" placeholder="Martinez" required>
               </div>
               <div class="form-group">
                 <label for="inputName">Apellido Materno</label>
-                <input type="text" name="ap_ma" class="form-control" value="<?php echo $ap_m?>" placeholder="Lopez" required>
+                <input type="text" name="ap_ma" class="form-control" value="" placeholder="Lopez" required>
               </div>
               <div class="form-group">
                 <label for="inputStatus">Sexo</label>
                 <select name="sexo_usu" class="form-control custom-select">
                   <option disabled>Selecciona</option>
-                  <option value="H" <?= ($sexo == 'H' ? 'selected' : '') ?> >Hombre</option>
-                  <option value="M" <?= ($sexo == 'M' ? 'selected' : '') ?> >Mujer</option>
+                  <option value="H" >Hombre</option>
+                  <option value="M" >Mujer</option>
                 </select>
               </div>
               <div class="form-group">
               <label for="inputName">Rol de usuario</label>
                 <br>
-                <input type="radio" name="rol_usu" id="rol-administrador" value="1" <?php echo ($rol == 1 ? 'checked' : '');?>>
+                <input type="radio" name="rol_usu" id="rol-administrador" value="1">
                 <label for="rol-administrador"> Administrador</label>
                 <br>
-                <input type="radio" name="rol_usu" id="rol-usuario" value="2" <?php echo ($rol == 2 ? 'checked' : '');?>>
+                <input type="radio" name="rol_usu" id="rol-usuario" value="2" checked>
                 <label for="rol-usuario"> Usuario</label>
                 </div>
 
               <div class="form-group">
                 <label for="inputClientCompany">Telefono</label placeholder="" required>
-                <input type="text" name="telefono_usu" class="form-control" value="<?php echo $telefono?>">
+                <input type="text" name="telefono_usu" class="form-control" value="">
               </div>
             </div>
             <!-- /.card-body -->
@@ -288,7 +275,7 @@
             <div class="card-body">
             <div class="form-group">
                 <label for="inputClientCompany">E-mail</label>
-                <input type="email" name="email_usu" class="form-control" value="<?php echo $email?>" placeholder="josealfredoml@gmail.com" required>
+                <input type="email" name="email_usu" class="form-control" value="" placeholder="josealfredoml@gmail.com" required>
               </div>
               <div class="form-group">
                 <label for="inputClientCompany">Contraseña</label>
@@ -303,12 +290,10 @@
                   <span id="mensaje_password"></span>
                 </div>
               </div>
-               <!-- imagen
               <div class="form-group">
                 <label for="inputEstimatedDuration">Imagen perfil</label>
                 <input type="file" class="form-control " name="archivo_usu" value="" placeholder="" required>
               </div>
-               -->
             </div>
             <!-- /.card-body -->
           </div>
@@ -317,8 +302,8 @@
       </div>
       <div class="row">
         <div class="col-12">
-          <a href="<?php echo base_url('/admin')?>" class="btn btn-secondary">Cancelar</a>
-          <input type="submit" id="btn-registrar" value="Editar Perfil" class="btn btn-success float-right">
+          <a href="<?php echo base_url('/admin/usuarios')?>" class="btn btn-secondary">Cancelar</a>
+          <input type="submit" id="btn-registrar" value="Registrar Nuevo Usuario" class="btn btn-success float-right">
         </div>
       </div>
     </section>
@@ -335,13 +320,23 @@
 <!-- ./wrapper -->
 
 <!-- jQuery -->
-<script src="<?php echo base_url()?>/panel/plugins/jquery/jquery.min.js"></script>
+<script src="<?php echo base_url();?>/panel/plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap 4 -->
-<script src="<?php echo base_url()?>/panel/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="<?php echo base_url();?>/panel/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- AdminLTE App -->
-<script src="<?php echo base_url()?>/panel/dist/js/adminlte.min.js"></script>
-<!-- AdminLTE for demo purposes -->
-<script src="<?php echo base_url()?>/panel/dist/js/demo.js"></script>
+<script src="<?php echo base_url();?>/panel/dist/js/adminlte.min.js"></script>
+
+
+<!--<script type="text/javascript">
+  let mensaje = '<?php echo $mensaje?>'
+    
+    if (mensaje == 1) {
+      alert("Agregado con exito");
+    } else if (mensaje == 0){
+      alert("no se agrego");
+      
+    }
+</script>-->
 
 <script>
         var check = function(){

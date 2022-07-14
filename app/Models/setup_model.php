@@ -73,7 +73,7 @@ $t_categoria = [
             ],
             'telefono' => [
                 'type'       => 'INT',
-                'constraint' => 11,
+                'constraint' => 20,
             ]
         ];
 //tabla para recetas

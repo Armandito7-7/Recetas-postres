@@ -38,12 +38,11 @@
   <nav class="sidebar">
     <div class="navbar-collapse" id="navbar-collapse">
       <div class="site-header hidden-xs">
-          <a class="site-brand" href="./index.html" title="">
+          <a class="site-brand" href="<?php echo base_url();?>/" title="">
             <img class="img-responsive site-logo" alt="" src="portal/assets/images/mashup-logo.svg">
-            Mashup Template
+            Dulzura Intensa
           </a>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-        tempor.</p>
+        <p>En este sitio web Encontraras las mejores recetas de resposteria.</p>
       </div>
       <ul class="nav">
         <li><a href="<?php echo base_url();?>/" title="">Inicio</a></li>
@@ -66,7 +65,7 @@
             <i class="fa fa-twitter"></i>
           </a>
         </p>
-        <p>© Untitled | Website created with <a href="http://www.mashup-template.com/" title="Create website with free html template">Mashup Template</a>/<a href="https://www.unsplash.com/" title="Beautiful Free Images">Unsplash</a></p>
+        <p>© Untitled | sitio web creado por  <a href="" title="Create website with free html template">Jose Armando Cruz Juarez</a> </br> <a href="" title="Beautiful Free Images">Irai Perez Chable</a></p>
       </nav>  
     </div> 
   </nav>
