@@ -28,7 +28,7 @@
 
   
   <!-- Main Sidebar Container -->
-  <aside class="main-sidebar sidebar-dark-primary elevation-4">
+  <aside class="main-sidebar sidebar-dark-primary elevation-4" style="background-color:  #168C69">
     <!-- Brand Logo -->
     <a href="<?php echo base_url();?>/" class="brand-link">
       <img src="<?php echo base_url();?>/panel/dist/img/logomin.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
@@ -210,8 +210,8 @@
     <section class="content">
       <div class="row">
         <div class="col-md-6">
-          <div class="card card-primary">
-            <div class="card-header">
+          <div class="card card-primary" >
+            <div class="card-header" >
               <h3 class="card-title">General</h3>
 
               <div class="card-tools">
@@ -245,7 +245,7 @@
               <div class="form-group">
               <label for="inputName">Rol de usuario</label>
                 <br>
-                <input type="radio" name="rol_usu" id="rol-administrador" value="1">
+                <input type="radio" name="rol_usu" id="rol-administrador" value="1" >
                 <label for="rol-administrador"> Administrador</label>
                 <br>
                 <input type="radio" name="rol_usu" id="rol-usuario" value="2" checked>
@@ -263,7 +263,7 @@
         </div>
         <div class="col-md-6">
           <div class="card card-secondary">
-            <div class="card-header">
+            <div class="card-header" style="background-color:  #168C69">
               <h3 class="card-title">Datos Sesion</h3>
 
               <div class="card-tools">

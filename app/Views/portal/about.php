@@ -12,14 +12,14 @@
   <!-- Disable tap highlight on IE -->
   <meta name="msapplication-tap-highlight" content="no">
   
-  <link href="portal/assets/apple-icon-180x180.png" rel="apple-touch-icon">
-  <link href="portal/assets/favicon.ico" rel="icon">
+  <link href="<?php echo base_url();?>/portal/assets/apple-icon-180x180.png" rel="apple-touch-icon">
+  <link href="<?php echo base_url();?>/portal/assets/favicon.ico" rel="icon">
 
 
 
-  <title>Title page</title>  
+  <title>Acerca de</title>  
 
-<link href="portal/main.82cfd66e.css" rel="stylesheet"></head>
+<link href="<?php echo base_url();?>/portal/main.82cfd66e.css" rel="stylesheet"></head>
 
 <body>
 
@@ -30,29 +30,35 @@
 
 <div class="row">
   <div class="col-xs-12 col-md-6">
-    <img class="img-responsive" alt="" src="portal/assets/images/img-10.jpg">
+    <img class="img-responsive" alt="" src="<?php echo base_url();?>/portal/assets/images/postresacercade.jpg">
   </div>
   <div class="col-xs-12 col-md-6">
-    <h1>About me</h1>
+    <h1>Dulzura intensa</h1>
     
-    <p>Duis aute irure dolor in reprehenderit in voluptate velit esse
-    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-    proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    <p>Pagina web creada para toda persona que le encanta cocinar pues creemos que la reposteria
+      es una de las mejores practicas que puede tener como persona,
+      La repostería es todo un arte, requiere mucho cuidado, dedicación y buenos ingredientes. 
+      La clave del éxito radica en la práctica y en dominar algunos trucos que harán lucir los acabados 
+      más lindos y apetitosos pero, en especial, que harán la vida más sencilla. </p>
     
-    <h3>Incididunt ut labore </h3>
+    <h3>¿Qué hacemos? </h3>
 
-    <p>Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Phasellus iaculis magna sagittis elit sagittis, at hendrerit lorem venenatis. Morbi accumsan iaculis blandit. Cras ultrices hendrerit nisl.</p>
+    <p>Recabar las mejores recetas de reposteria, 100% gratis y con una comunidad grande, aqui puedes
+      encontrar un gran catalogo de recetas sin algun costo, desde como preparalas, los ingredientes 
+      hasta en cuento tiempo se tara en hacer dicha receta 
+    </p>
 
-    <h3>Ut enim ad minim veniam </h3>
+    <h3>Mision </h3>
     
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas luctus at sem quis varius. 
-    Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Phasellus iaculis magna sagittis elit sagittis, at hendrerit lorem venenatis. Morbi accumsan iaculis blandit. Cras ultrices hendrerit nisl.</p>
-    <h3>Phasellus iaculis magna </h3>
-    <p>Duis aute irure dolor in reprehenderit in voluptate velit esse
-    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-    proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-    
-    <a href="contact.html" class="btn btn-primary" title=""> Get in touch</a>
+    <p>Ser una de las mejores paginas de reposteria en todo internet asi como tener una gran comunidad 
+     unida y armonioza unida con un solo fin, realizar las mejores recetas de reposteria.</p>
+
+    <h3>Unete con nocotros </h3>
+    <p>se parte de nuestra comunidad y ayudanos a crecer para poder ser la mejor
+    Comunidad de reposteria en internet, solo tienes que registrarte para poder 
+    crear nuevas recetas y conocer las mejores recetas asi como tambien conocer nuestra comunidad.</p>
+</br>
+    <a href="<?php echo base_url('/login');?>" class="btn btn-primary" title=""> Registrate</a>
  </div>
 </div>
     
@@ -67,6 +73,6 @@ document.addEventListener("DOMContentLoaded", function (event) {
 
 
 
-<script type="text/javascript" src="portal/main.85741bff.js"></script></body>
+<script type="text/javascript" src="<?php echo base_url();?>/portal/main.85741bff.js"></script></body>
 
 </html>

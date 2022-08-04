@@ -3,14 +3,24 @@
 namespace App\Controllers;
 
     use App\Models\crudmodel;
+    use App\Models\contador;
 
 class panel extends BaseController
 {
     public function index()
     {
         
+        $Contador = new contador();
+        $respuestausu = $Contador->contarusuarios();
+        $respuestaconta = $Contador->contarrecetas();
+
+        $data = [
+            "usuarios" => $respuestausu,
+            "recetas" => $respuestaconta,
+        ];
+
         echo view('panel/menu-panel');
-        echo view('panel/index');
+        echo view('panel/index',$data);
        
     }
 
@@ -227,7 +237,7 @@ class panel extends BaseController
         return view('panel/recetas/editarfoto',$datos);
     }
 
-    public function actualizarfotorece($idreceta) //funcion para actualizar la imagen del usuario 
+    public function actualizarfotorece($idreceta) //funcion para actualizar la imagen de la receta
     {   
         $Crud = new crudmodel();
         $imagen = file_get_contents($_FILES['archivo_rece']['tmp_name']);
@@ -342,7 +352,7 @@ class panel extends BaseController
     }
 
 
-    public function vercategorias($idcate) //ver todas las recetas
+    public function vercategorias($idcate) //ver categorias
     {
         $Crud = new crudmodel();
         $datosusu = $Crud->listarnombres();

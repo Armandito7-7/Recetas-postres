@@ -41,7 +41,7 @@
 
   
   <!-- Main Sidebar Container -->
-  <aside class="main-sidebar sidebar-dark-primary elevation-4">
+  <aside class="main-sidebar sidebar-dark-primary elevation-4" style="background-color:  #168C69">
     <!-- Brand Logo -->
     <a href="<?php echo base_url();?>/" class="brand-link">
       <img src="<?php echo base_url();?>/panel/dist/img/logomin.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
@@ -276,7 +276,7 @@
         </div>
         <div class="col-md-6">
           <div class="card card-secondary">
-            <div class="card-header">
+            <div class="card-header" style="background-color:  #168C69">
               <h3 class="card-title">Datos Sesion</h3>
 
               <div class="card-tools">
@@ -340,8 +340,7 @@
 <script src="<?php echo base_url()?>/panel/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- AdminLTE App -->
 <script src="<?php echo base_url()?>/panel/dist/js/adminlte.min.js"></script>
-<!-- AdminLTE for demo purposes -->
-<script src="<?php echo base_url()?>/panel/dist/js/demo.js"></script>
+
 
 <script>
         var check = function(){

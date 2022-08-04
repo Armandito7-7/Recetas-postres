@@ -12,14 +12,14 @@
   <!-- Disable tap highlight on IE -->
   <meta name="msapplication-tap-highlight" content="no">
   
-  <link href="portal/assets/apple-icon-180x180.png" rel="apple-touch-icon">
-  <link href="portal/assets/favicon.ico" rel="icon">
+  <link href="<?php echo base_url();?>/portal/assets/apple-icon-180x180.png" rel="apple-touch-icon">
+  <link href="<?php echo base_url();?>/portal/assets/favicon.ico" rel="icon">
 
 
 
-  <title>Title page</title>  
+  <title>Recetas</title>  
 
-<link href="portal/main.82cfd66e.css" rel="stylesheet"></head>
+<link href="<?php echo base_url();?>/portal/main.82cfd66e.css" rel="stylesheet"></head>
 
 <body>
 
@@ -29,33 +29,22 @@
 
 <div class="row">
   <div class="col-xs-12 section-container-spacer">
-    <h1>Services</h1>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-      tempor incididunt ut labore et dolore magna aliqua. <br>Ut enim ad minim veniam,
-      quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-      consequat.</p>
+    <h1>Recetas</h1>
+    <p>Las mejores recetas de reposteria 
+      </p>
   </div>
 
+  <?php foreach ($datos as $key):?>
   <div class="col-xs-12 col-md-4 section-container-spacer">
-    <img class="img-responsive" alt="" src="portal/assets/images/img-12.jpg">
-    <h2>Consectetur</h2>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-    <a href="./contact.html" class="btn btn-primary" title=""> Get in touch</a>
+    <center><img class="img-responsive" alt="No tiene imagen" <?php echo 'src="data:image/jpg;base64,'.base64_encode($key->ruta_imagen).'"'?> style="height: 200px;" ></center>
+    <h3><?php echo $key->nombre_receta?></h3>
+    <p>Autor: </b> <?php  foreach ($datosusu as $k): if ($k->id_usuario==$key->id_usuario) {echo $k->nombre_usuario.' '.$k->ap_paterno_usuario;} endforeach?>
+    </br> Categoria: <?php  foreach ($datoscate as $k): if ($k->id_categoria==$key->id_categoria) {echo $k->nombre_categoria;} endforeach?>
+    </br> <?php echo $key->tiempo ?> Minutos</p>
+    <a href="<?php echo base_url().'/recetas/descripcion/'.$key->id_receta?>" class="btn btn-primary" title=""> Ver receta</a>
   </div>
+  <?php endforeach?>
 
-  <div class="col-xs-12 col-md-4 section-container-spacer">
-    <img class="img-responsive" alt="" src="portal/assets/images/img-13.jpg">
-    <h2>Adipiscing</h2>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-    <a href="./contact.html" class="btn btn-primary" title=""> Get in touch</a>
-  </div>
-
-  <div class="col-xs-12 col-md-4 section-container-spacer">
-    <img class="img-responsive" alt="" src="portal/assets/images/img-14.jpg">
-    <h2>Dolor</h2>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-    <a href="./contact.html" class="btn btn-primary" title=""> Get in touch</a>
-  </div>
 
 </div>
 
@@ -69,6 +58,6 @@ document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 
-<script type="text/javascript" src="portal/main.85741bff.js"></script></body>
+<script type="text/javascript" src="<?php echo base_url();?>/portal/main.85741bff.js"></script></body>
 
 </html>

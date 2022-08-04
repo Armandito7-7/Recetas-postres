@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Panel | Dashboard</title>
+
 
   <link rel="stylesheet" href="panel/plugins/fontawesome-free/css/all.min.css">
   <link rel="stylesheet" href="panel/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
@@ -24,7 +24,7 @@
 
   
   <!-- Main Sidebar Container -->
-  <aside class="main-sidebar sidebar-dark-primary elevation-4">
+  <aside class="main-sidebar sidebar-dark-primary elevation-4" style="background-color:  #B24543">
     <!-- Brand Logo -->
     <a href="<?php echo base_url();?>/" class="brand-link">
       <img src="panel/dist/img/logomin.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">

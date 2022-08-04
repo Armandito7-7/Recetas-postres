@@ -9,8 +9,19 @@ class Home extends BaseController
 {
     public function index()
     {
-        echo view('portal/menu');
-        echo view('index');
+        $Crud = new crudmodel();
+        $datos = $Crud->listarrecetas();
+        $datosusu = $Crud->listarnombres();
+        $datoscate = $Crud->listarcategorias();
+        $mensaje = session('mensaje');
+        $data = [
+                    "datos" => $datos,
+                    "datosusu" => $datosusu,
+                    "datoscate" => $datoscate,
+                    "mensaje" => $mensaje
+        ]; 
+        echo view('portal/menu',$data);
+        echo view('index',);
        
     }
 

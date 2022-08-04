@@ -36,18 +36,24 @@ $routes->set404Override();
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
 
+//configuracion de la base de datos
+$routes->get('/setupbd', 'setup::index'); 
+$routes->get('/setupbd/clearbd', 'setup::limpiarBD');
+$routes->get('/setupbd/clearbdtb', 'setup::limpiarBDtablas'); 
+$routes->get('/setupbd/createbdtb', 'setup::creartablasBD');   
+
 //EMPIEZAN LAS RUTAS PARA EL PORTAL 
 $routes->get('/', 'Home::index');
-$routes->get('/setupbd', 'setup::index'); //configuracion de la base de datos
+
 $routes->get('/about', 'Home::about');
 $routes->get('/login', 'Home::login');
 $routes->post('/verificar', 'Home::verificar'); //consulta para inicio de sesion
 $routes->post('/primerusuario', 'Home::registrarprimer'); //consulta para primer registro usuario
 $routes->get('/recetas', 'recetas::inicio');
 $routes->get('/salir', 'Home::salirsesion');
-$routes->get('/recetas/descripcion', 'recetas::descripcion');
-$routes->get('/categorias', 'categorias::inicio');
-$routes->get('/categorias', 'categorias::descripcion');
+$routes->get('/recetas/descripcion/(:any)', 'recetas::descripcion/$1');
+$routes->get('/categorias/(:any)', 'categorias::inicio/$1');
+
 
 //EMPIEZAN LAS RUTAS PARA EL PANEL 
 

@@ -17,7 +17,7 @@
 
 
 
-  <title>Title page</title>  
+  <title>Inicio</title>  
 
 <link href="portal/main.82cfd66e.css" rel="stylesheet"></head>
 
@@ -27,106 +27,26 @@
 
 <!-- Add your site or app content here -->
  
+
 <div class="hero-full-wrapper">
   <div class="grid">
   <div class="gutter-sizer"></div>
     <div class="grid-sizer"></div>
     
+    <?php foreach ($datos as $key):?>
     <div class="grid-item">
-      <img class="img-responsive" alt="" src="portal/assets/images/img-12.jpg">
-      <a href="portal/project.html" class="project-description">
+      <img class="img-responsive" alt="" <?php echo 'src="data:image/jpg;base64,'.base64_encode($key->ruta_imagen).'"'?>>
+      <a href="<?php echo base_url().'/recetas/descripcion/'.$key->id_receta?>" class="project-description">
         <div class="project-text-holder">
           <div class="project-text-inner">
-            <h3>Vivamus vestibulum</h3>
-            <p>Discover more</p>
+            <h3><?php echo $key->nombre_receta?></h3>
+            <p><?php echo $key->tiempo ?> Minutos</p>
           </div>
         </div>
       </a>
     </div>
+    <?php endforeach?>
 
-    
-    <div class="grid-item">
-      <img class="img-responsive" alt="" src="portal/assets/images/img-05.jpg">
-      <a href="portal/project.html" class="project-description">
-        <div class="project-text-holder">
-          <div class="project-text-inner">
-            <h3>Vivamus vestibulum</h3>
-            <p>Discover more</p>
-          </div>
-        </div>
-      </a>
-    </div>
-
-    <div class="grid-item">
-      <img class="img-responsive" alt="" src="portal/assets/images/img-13.jpg">
-      <a href="portal/project.html" class="project-description">
-        <div class="project-text-holder">
-          <div class="project-text-inner">
-            <h3>Vivamus vestibulum</h3>
-            <p>Discover more</p>
-          </div>
-        </div>
-      </a>
-    </div>
-    <div class="grid-item">
-      <img class="img-responsive" alt="" src="portal/assets/images/img-04.jpg">
-      <a href="portal/project.html" class="project-description">
-        <div class="project-text-holder">
-          <div class="project-text-inner">
-            <h3>Vivamus vestibulum</h3>
-            <p>Discover more</p>
-          </div>
-        </div>
-      </a>
-    </div>
-    
-    <div class="grid-item">
-      <img class="img-responsive" alt="" src="portal/assets/images/img-07.jpg">
-      <a href="portal/project.html" class="project-description">
-        <div class="project-text-holder">
-          <div class="project-text-inner">
-            <h3>Vivamus vestibulum</h3>
-            <p>Discover more</p>
-          </div>
-        </div>
-      </a>
-    </div>
-
-    <div class="grid-item">
-      <img class="img-responsive" alt="" src="portal/assets/images/img-11.jpg">
-      <a href="portal/project.html" class="project-description">
-        <div class="project-text-holder">
-          <div class="project-text-inner">
-            <h3>Vivamus vestibulum</h3>
-            <p>Discover more</p>
-          </div>
-        </div>
-      </a>
-    </div>
-
-    <div class="grid-item">
-      <img class="img-responsive" alt="" src="portal/assets/images/img-10.jpg">
-      <a href="portal/project.html" class="project-description">
-        <div class="project-text-holder">
-          <div class="project-text-inner">
-            <h3>Vivamus vestibulum</h3>
-            <p>Discover more</p>
-          </div>
-        </div>
-      </a>
-    </div>
-    <div class="grid-item">
-      <img class="img-responsive" alt="" src="portal/assets/images/img-03.jpg">
-      <a href="portal/project.html" class="project-description">
-        <div class="project-text-holder">
-          <div class="project-text-inner">
-            <h3>Vivamus vestibulum</h3>
-            <p>Discover more</p>
-          </div>
-        </div>
-      </a>
-    </div>
-    
   </div>
 </div>
 

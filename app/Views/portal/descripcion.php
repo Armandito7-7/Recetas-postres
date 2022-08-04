@@ -1,3 +1,15 @@
+<?php
+                $id_receta = $datos[0]['id_receta'];
+                $nombre = $datos[0]['nombre_receta'];
+                $id_categoria = $datos[0]['id_categoria'];
+                $id_usuario = $datos[0]['id_usuario'];
+                $ingredientes = $datos[0]['ingredientes'];
+                $preparacion = $datos[0]['preparacion'];
+                $tiempo = $datos[0]['tiempo'];
+                $imagen = $datos[0]['ruta_imagen'];
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,14 +24,14 @@
   <!-- Disable tap highlight on IE -->
   <meta name="msapplication-tap-highlight" content="no">
   
-  <link href="portal/assets/apple-icon-180x180.png" rel="apple-touch-icon">
-  <link href="portal/assets/favicon.ico" rel="icon">
+  <link href="<?php echo base_url();?>/portal/assets/apple-icon-180x180.png" rel="apple-touch-icon">
+  <link href="<?php echo base_url();?>/portal/assets/favicon.ico" rel="icon">
 
 
 
-  <title>Title page</title>  
+  <title>Receta</title>  
 
-<link href="portal/main.82cfd66e.css" rel="stylesheet"></head>
+<link href="<?php echo base_url();?>/portal/main.82cfd66e.css" rel="stylesheet"></head>
 
 <body>
 
@@ -31,28 +43,21 @@
   <div class="col-xs-12 col-md-8">
 
     <div class="section-container-spacer">
-        <h1>Project</h1>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-          tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-          quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-          consequat.</p>
+        <h1><?php echo $nombre ?></h1>
+        <p><b>Autor:</b> <?php foreach ($datosusu as $k): if ($k->id_usuario==$id_usuario) {echo $k->nombre_usuario.' '.$k->ap_paterno_usuario;} endforeach?> </p>
+        <p><b>Tiempo: </b> <?php echo ' '.$tiempo ?> minutos</p> 
+        
     </div>
 
     <div class="section-container-spacer">
-      <p><img class="img-responsive" alt="" src="./assets/images/img-12.jpg"></p>
-      <div class="row">
-          <div class="col-xs-12 col-md-6">
-              <p><img class="img-responsive" alt="" src="./assets/images/img-13.jpg"></p>
-          </div>
-          <div class="col-xs-12 col-md-6">
-              <p><img class="img-responsive" alt="" src="./assets/images/img-14.jpg"></p>
-          </div>
-      </div>
+      <p><img class="img-responsive" alt="" src="<?php echo 'data:image/jpg;base64,'.base64_encode($imagen)?>"></p>
     </div>
-
-    <p> Duis aute irure dolor in reprehenderit in voluptate velit esse
-    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-    proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    <h3>Categoria:</h3>
+    <a href="<?php echo base_url().'/categorias/'.$id_categoria?>" class="btn btn-primary btn-lg"  style="margin: 4.60px;"><?php  foreach ($datoscate as $k): if ($k->id_categoria==$id_categoria) {echo $k->nombre_categoria;} endforeach?></a>
+    <h3>Ingredientes:</h3>
+    <p><?php echo $ingredientes ?> </p>
+    <h3>Preparación:</h3>
+    <p><?php echo $preparacion ?> </p>
   </div>
   
 </div>
@@ -68,6 +73,6 @@ document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 
-<script type="text/javascript" src="portal/main.85741bff.js"></script></body>
+<script type="text/javascript" src="<?php echo base_url();?>/portal/main.85741bff.js"></script></body>
 
 </html>
